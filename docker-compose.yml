@@ -35,16 +35,13 @@ services:
   db:
     image: mongo:7-jammy
     container_name: unifiDB
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_DATABASE=auth
-      - MONGO_INITDB_ROOT_PASSWORD=pass
     networks: 
       - mongo-compose-network
     ports:
       - 27017:27017
     volumes: 
       - ./mongodb:/data/db
+      - ./mongodb:/init-mongo.js
   mongo-express:
     image: mongo-express
     container_name: mongo-express
